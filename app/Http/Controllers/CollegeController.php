@@ -20,7 +20,49 @@ class CollegeController extends Controller
     public function store(Request $request)
     {
         //1
-        //2
+             // Convert input to lowercase for case-insensitive checking
+             $codeLower = strtolower($request->code);
+             $nameLower = strtolower($request->name);
+
+             // Check if the code already exists (case insensitive)
+             $existingCollegeByCode = College::whereRaw('LOWER(CollegeCode) = ?', [$codeLower])->withTrashed()->first();
+
+             // Check if the name already exists (case insensitive)
+             $existingCollegeByName = College::whereRaw('LOWER(CollegeName) = ?', [$nameLower])->withTrashed()->first();
+
+             // If both code and name match deleted records
+             if ($existingCollegeByCode && $existingCollegeByCode->trashed() && $existingCollegeByName && $existingCollegeByName->trashed()) {
+                 return back()->with([
+                     'restore_id' => $existingCollegeByCode->CollegeID,
+                     'message' => 'A college with this code and name was deleted. Would you like to restore it?',
+                 ]);
+             }
+             // If only the code matches a deleted record
+             elseif ($existingCollegeByCode && $existingCollegeByCode->trashed()) {
+                 return back()->with([
+                     'restore_id' => $existingCollegeByCode->CollegeID,
+                     'message' => 'A college with this code was deleted. Would you like to restore it?',
+                 ]);
+             }
+             // If only the name matches a deleted record
+             elseif ($existingCollegeByName && $existingCollegeByName->trashed()) {
+                 return back()->with([
+                     'restore_id' => $existingCollegeByName->CollegeID,
+                     'message' => 'A college with this name was deleted. Would you like to restore it?',
+                 ]);
+             }
+             // If code or name exists (not deleted)
+             elseif ($existingCollegeByCode || $existingCollegeByName) {
+                 $errors = [];
+                 if ($existingCollegeByCode) {
+                     $errors['code'] = 'The college code already exists.';
+                 }
+                 if ($existingCollegeByName) {
+                     $errors['name'] = 'The college name already exists.';
+                 }
+                 return back()->withErrors($errors)->withInput();
+             }
+
         College::create([
             'CollegeCode' => $request->code,
             'CollegeName' => $request->name,
