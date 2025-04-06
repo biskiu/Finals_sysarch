@@ -24,6 +24,22 @@ class DepartmentController extends Controller
     {
 
 //4
+$request->validate([
+    'code' => [
+        'required',
+        Rule::unique('departments', 'DepartmentCode')->where(function ($query) use ($request) {
+            return $query->where('CollegeID', $request->college_id);
+        }),
+    ],
+    'name' => [
+        'required',
+        Rule::unique('departments', 'DepartmentName')->where(function ($query) use ($request) {
+            return $query->where('CollegeID', $request->college_id);
+        }),
+    ],
+    'college_id' => 'required|exists:colleges,CollegeID',
+]);
+
         Department::create([
             'DepartmentCode' => $request->code,
             'DepartmentName' => $request->name,
