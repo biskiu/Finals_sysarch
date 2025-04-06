@@ -76,6 +76,12 @@ class CollegeController extends Controller
     public function update(Request $request, $id)
     {
 //3
+$request->validate([
+    'code' => 'required|unique:colleges,CollegeCode,' . $id . ',CollegeID',
+    'name' => 'required|unique:colleges,CollegeName,' . $id . ',CollegeID',
+    'status' => 'required|boolean'
+]);
+
         $college = College::findOrFail($id);
         $college->update([
             'CollegeCode' => $request->code,
