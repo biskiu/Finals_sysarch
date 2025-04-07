@@ -20,6 +20,10 @@ class CollegeController extends Controller
     public function store(Request $request)
     {
         //1
+        $request->validate([
+            'code' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
+        ]);
              // Convert input to lowercase for case-insensitive checking
              $codeLower = strtolower($request->code);
              $nameLower = strtolower($request->name);
