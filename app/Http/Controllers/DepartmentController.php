@@ -55,6 +55,22 @@ $request->validate([
     {
         $department = Department::findOrFail($id);
 //5
+$request->validate([
+    'name' => [
+        'required',
+        Rule::unique('departments', 'DepartmentName')
+            ->where(fn($query) => $query->where('CollegeID', $department->CollegeID))
+            ->ignore($department->DepartmentID, 'DepartmentID'),
+    ],
+    'code' => [
+        'required',
+        Rule::unique('departments', 'DepartmentCode')
+            ->where(fn($query) => $query->where('CollegeID', $department->CollegeID)) // Enforces uniqueness within the same college
+            ->ignore($department->DepartmentID, 'DepartmentID'),
+    ],
+    'status' => 'required|boolean',
+]);
+
         try {
             $department->update([
                 'DepartmentCode' => $request->code,
