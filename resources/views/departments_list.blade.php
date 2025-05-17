@@ -149,5 +149,11 @@
     <button>Show Inactive</button>
     <button>Show Deleted</button>
 </div>
+
+<nav class="breadcrumb">
+    <a href="#">Home</a> &gt;
+    <a href="#">Colleges</a> &gt;
+    <span>Departments</span>
+</nav>
 </body>
 </html>
