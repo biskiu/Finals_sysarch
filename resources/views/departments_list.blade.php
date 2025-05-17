@@ -132,5 +132,35 @@
 <script src="/js/department_script.js"></script>
 <br><br><br>
 
+<div class="department-cards">
+    <div class="card">
+        <h3>Computer Science</h3>
+        <p>Code: CS</p>
+        <p>Status: Active</p>
+    </div>
+    <div class="card">
+        <h3>Electronics</h3>
+        <p>Code: ECE</p>
+        <p>Status: Inactive</p>
+    </div>
+</div>
+<div class="filter-buttons">
+    <button>Show Active</button>
+    <button>Show Inactive</button>
+    <button>Show Deleted</button>
+</div>
+
+<nav class="breadcrumb">
+    <a href="#">Home</a> &gt;
+    <a href="#">Colleges</a> &gt;
+    <span>Departments</span>
+</nav>
+
+<div class="status-legend">
+    <p><span class="dot green"></span> Active</p>
+    <p><span class="dot gray"></span> Inactive</p>
+    <p><span class="dot red"></span> Deleted</p>
+</div>
+
 </body>
 </html>
