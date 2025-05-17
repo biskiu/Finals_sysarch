@@ -13,6 +13,21 @@
 
 <div class="diva">
 
+    <form method="GET">
+        <input type="text" name="search" placeholder="Search college..." value="Sample" readonly>
+        <button type="submit">Search</button>
+    </form>
+
+    <table>
+        <tbody id="tableBody">
+            <tr>
+                <td>Sample College</td>
+                <td>SC123</td>
+                <td><span class="status-active">Active</span></td>
+                <td>Static entry</td>
+            </tr>
+        </tbody>
+    </table>
 
 
     <form method="GET">
@@ -48,7 +63,6 @@
     @endif
 
     </tr>
-
     <tbody id="tableBody">
         @foreach ($colleges as $c)
             <tr class="{{ $c->deleted_at ? 'deleted' : '' }}">
