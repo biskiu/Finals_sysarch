@@ -144,6 +144,10 @@
         <p>Status: Inactive</p>
     </div>
 </div>
-
+<div class="filter-buttons">
+    <button>Show Active</button>
+    <button>Show Inactive</button>
+    <button>Show Deleted</button>
+</div>
 </body>
 </html>
