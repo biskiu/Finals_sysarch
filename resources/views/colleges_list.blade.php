@@ -13,7 +13,7 @@
 
 <div class="diva">
     <h1>Colleges</h1>
-        <div>   
+        <div>
             <button onclick="openAddModal()">Add College</button>
             <label>
                 <input type="radio" name="filter" id="hideDeleted" checked> Hide Deleted
@@ -21,6 +21,13 @@
             </label>
         </div>
         <br>
+        
+        <form method="GET">
+            <input type="text" name="search" placeholder="Search college...">
+            <button type="submit">Search</button>
+        </form>
+
+
 <table>
     <tr>
         <th>Name</th>

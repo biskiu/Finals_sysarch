@@ -14,6 +14,18 @@ class CollegeController extends Controller
         $colleges = College::withTrashed()->get(); // Fetch all, including soft-deleted
         return view('colleges_list', compact('colleges'));
     }
+    
+    public function index(Request $request)
+    {
+        $query = College::query();
+
+        if ($request->has('search')) {
+            $query->where('CollegeName', 'like', '%' . $request->search . '%');
+        }
+
+        $colleges = $query->get();
+        return view('colleges.index', compact('colleges'));
+    }
 
 
 
