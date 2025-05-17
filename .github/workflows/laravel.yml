@@ -17,7 +17,7 @@ jobs:
         env:
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
           MYSQL_DATABASE: collegedb
-          MYSQL_USER: root
+          # Removed MYSQL_USER: root
         ports:
           - 3306:3306
         options: >-
@@ -55,6 +55,13 @@ jobs:
 
       - name: Clear config cache
         run: php artisan config:clear
+
+      - name: Wait for MySQL to be ready
+        run: |
+          until mysqladmin ping -h 127.0.0.1 --silent; do
+            echo "Waiting for MySQL..."
+            sleep 3
+          done
 
       - name: Run migrations
         env:
