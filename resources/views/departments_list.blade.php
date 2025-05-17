@@ -132,5 +132,18 @@
 <script src="/js/department_script.js"></script>
 <br><br><br>
 
+<div class="department-cards">
+    <div class="card">
+        <h3>Computer Science</h3>
+        <p>Code: CS</p>
+        <p>Status: Active</p>
+    </div>
+    <div class="card">
+        <h3>Electronics</h3>
+        <p>Code: ECE</p>
+        <p>Status: Inactive</p>
+    </div>
+</div>
+
 </body>
 </html>
