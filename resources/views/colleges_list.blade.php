@@ -12,6 +12,14 @@
 
 
 <div class="diva">
+
+
+
+    <form method="GET">
+        <input type="text" name="search" placeholder="Search college...">
+        <button type="submit">Search</button>
+    </form>
+
     <h1>Colleges</h1>
         <div>
             <button onclick="openAddModal()">Add College</button>
@@ -21,12 +29,6 @@
             </label>
         </div>
         <br>
-        
-        <form method="GET">
-            <input type="text" name="search" placeholder="Search college...">
-            <button type="submit">Search</button>
-        </form>
-
 
 <table>
     <tr>
