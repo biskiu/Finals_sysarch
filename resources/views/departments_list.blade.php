@@ -155,5 +155,12 @@
     <a href="#">Colleges</a> &gt;
     <span>Departments</span>
 </nav>
+
+<div class="status-legend">
+    <p><span class="dot green"></span> Active</p>
+    <p><span class="dot gray"></span> Inactive</p>
+    <p><span class="dot red"></span> Deleted</p>
+</div>
+
 </body>
 </html>
